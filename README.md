@@ -1,3 +1,9 @@
+# IMPORTANT NOTE
+
+It's a demo project. Don't use for production.
+
+本项目仅为演示，不保证可用性。
+
 # 这是什么
 
 备用代理，以防失联，适用于电脑端。
