@@ -8,7 +8,9 @@ It's a demo project. Don't use for production.
 
 备用代理，以防失联，适用于电脑端。
 
-与 Nekogram X 的公共代理一致。
+原理与 `Nekogram` `Nekogram X` 的公共代理一致。
+
+本程序获取的是 `Nekogram X` 的节点。
 
 # 如何自行搭建 WSS 中继
 
