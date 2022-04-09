@@ -49,8 +49,11 @@ func getNekoXStringWorker(ctx context.Context, in, out chan string, cancel conte
 			return
 		case doh := <-in:
 			ret := getTXTUsingDoH(ctx, doh)
-			if _, err := base64.RawURLEncoding.DecodeString(ret); err != nil || ret == "" {
-				// fmt.Println(err, ret, doh)
+
+			_, err1 := base64.StdEncoding.DecodeString(ret)
+			_, err2 := base64.URLEncoding.DecodeString(ret)
+
+			if ret == "" || (err1 != nil && err2 != nil) {
 				if atomic.AddInt32(&_subscribeBad, 1) == int32(len(nekoXSubscriptionDohs)) {
 					cancel()
 					out <- ""
