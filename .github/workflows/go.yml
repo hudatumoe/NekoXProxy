@@ -16,19 +16,19 @@ jobs:
     if: github.event.inputs.upload != 'y'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.19
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.19
 
-    - name: Build
-      run: go build && bash build_muiltarch.sh
+      - name: Build
+        run: go build && bash build_muiltarch.sh
 
-    - name: Release
-      run: |
-        wget -O ghr.tar.gz https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz
-        tar -xvf ghr.tar.gz
-        mv ghr*linux_amd64/ghr .
-        ./ghr -delete -t "${{GIT_SSH_COMMAND="ssh -i ~/.ssh/ github.token }}" -n "${{ github.event.inputs.tag }}" "${{ github.event.inputs.tag }}" releases
+      - name: Release
+        run: |
+          wget -O ghr.tar.gz https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz
+          tar -xvf ghr.tar.gz
+          mv ghr*linux_amd64/ghr .
+          ./ghr -delete -t "${{GIT_SSH_COMMAND="ssh -i ~/.ssh/ github.token }}" -n "${{ github.event.inputs.tag }}" "${{ github.event.inputs.tag }}" releases
