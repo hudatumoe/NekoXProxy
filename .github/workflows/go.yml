@@ -5,7 +5,7 @@ on:
     inputs:
       tag:
         description: 'Release Tag'
-        required: true
+        required: false
       upload:
         description: 'Upload: If want ignore'
         required: false
@@ -22,6 +22,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: default tag
+        run: |
+          if [ -z "${{ github.event.inputs.tag }}" ]; then
+            echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          else
+            echo "tag=${{ github.event.inputs.tag }}" >> $GITHUB_ENV
+          fi
+        shell: bash
+
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
@@ -35,6 +44,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: release/*
+          tag_name: ${{ env.tag }}
+          release_name: ${{ env.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
