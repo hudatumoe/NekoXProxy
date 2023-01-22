@@ -56,14 +56,14 @@ jobs:
           export GOARCH=${{ matrix.goarch }}
           bash build.sh
 
-      - name: Release
-        # upload all files in release directory
-        uses: softprops/action-gh-release@v1
-        with:
-          files: release/*
-          tag_name: ${{ env.tag }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Release
+#        # upload all files in release directory
+#        uses: softprops/action-gh-release@v1
+#        with:
+#          files: release/*
+#          tag_name: ${{ env.tag }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Uploading assets...
         if: ${{ !env.ACT }}
