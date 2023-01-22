@@ -10,7 +10,7 @@ import (
 var mapper = make(map[string]int)
 
 func parseNekoXString(a string) bool {
-	// fmt.Println(a)
+	fmt.Println(a)
 
 	if a == "" {
 		return false
@@ -24,6 +24,7 @@ func parseNekoXString(a string) bool {
 
 	pldstr, _ := base64.RawURLEncoding.DecodeString(url.Query().Get("payload"))
 	plds := strings.Split(string(pldstr), ",")
+	//fmt.Println(plds)
 
 	nekoXProxyBaseDomain = url.Host
 	nekoXProxyDomains = append([]string{""}, plds...)

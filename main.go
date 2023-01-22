@@ -17,7 +17,7 @@ var client *http.Client
 
 func main() {
 	listen := flag.String("l", "127.0.0.1:26641", "HttpProxy listen port")
-	_nekoXProxyString := flag.String("p", "", "NekoX Proxy URL (keep empty if you don't know)")
+	_nekoXProxyString := flag.String("p", "wss://tg.cf.sustc.icu/?payload=YSxiLGMsZCxlLGYsZyxo", "NekoX Proxy URL (keep empty if you don't know)")
 	flag.Parse()
 
 	var ok bool
