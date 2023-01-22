@@ -56,6 +56,11 @@ jobs:
           export GOARCH=${{ matrix.goarch }}
           bash build.sh
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: NekoXProxy_${{ matrix.goos }}_${{ matrix.goarch }}
+          path: ./release/NekoXProxy_${{ matrix.goos }}_${{ matrix.goarch }}*
+
       #      - name: Release
       #        # upload all files in release directory
       #        uses: softprops/action-gh-release@v1
