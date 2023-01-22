@@ -56,15 +56,25 @@ jobs:
           export GOARCH=${{ matrix.goarch }}
           bash build.sh
 
-#      - name: Release
-#        # upload all files in release directory
-#        uses: softprops/action-gh-release@v1
-#        with:
-#          files: release/*
-#          tag_name: ${{ env.tag }}
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      #      - name: Release
+      #        # upload all files in release directory
+      #        uses: softprops/action-gh-release@v1
+      #        with:
+      #          files: release/*
+      #          tag_name: ${{ env.tag }}
+      #        env:
+      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.tag }}
+          release_name: Release ${{ env.tag }}
+          body: TODO New Release.
+          draft: false
+          prerelease: false
       - name: Uploading assets...
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
