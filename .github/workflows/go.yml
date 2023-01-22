@@ -54,7 +54,7 @@ jobs:
         run: |
           export GOOS=${{ matrix.goos }}
           export GOARCH=${{ matrix.goarch }}
-          go build && bash build.sh
+          bash build.sh
 
       - name: Release
         # upload all files in release directory

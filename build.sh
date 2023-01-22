@@ -9,6 +9,7 @@ build(){
     echo "正在编译: "$GOOS"_"$GOARCH
     go build -trimpath -ldflags "-w -s" -o  "NekoXProxy_""$GOOS"_"$GOARCH""$exe"
 }
+build
 rm -rf releases
 mkdir releases
 mv NekoXProxy_* releases
